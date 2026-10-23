@@ -6,7 +6,7 @@
 
 A collection of Python-based scripts and visualizations demonstrating core **Control Theory** principles. Built as a visual study companion for students exploring dynamic systems and feedback control.
 
-## 📚 Curriculum Alignment
+## Curriculum Alignment
 
 The plots and simulations in this repository are organized around three courses from the **School of Electrical and Computer Engineering** at the **National Technical University of Athens (NTUA)**:
 
@@ -14,7 +14,7 @@ The plots and simulations in this repository are organized around three courses 
 2. **Control Systems Design** — *PID tuning, lead-lag compensators, and frequency-domain design.*
 3. **Advanced Automatic Control Systems Techniques** — *State-space representation, pole placement, and optimal control.*
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 Make sure you have Python installed along with the required scientific libraries:
