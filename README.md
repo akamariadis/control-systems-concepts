@@ -19,3 +19,5 @@ The necessary Python scientific libraries are listed below:
 
 ```bash
 pip install numpy scipy matplotlib control
+or
+brew install numpy scipy matplotlib control
