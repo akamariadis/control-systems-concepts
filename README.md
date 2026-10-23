@@ -14,8 +14,6 @@ The plots and simulations in this repository are organized around three courses 
 2. **Control Systems Design** — *PID tuning, lead-lag compensators, and frequency-domain design.*
 3. **Advanced Automatic Control Systems Techniques** — *State-space representation, pole placement, and optimal control.*
 
-## Getting Started
-
 ### Prerequisites
 Make sure you have Python installed along with the required scientific libraries:
 
