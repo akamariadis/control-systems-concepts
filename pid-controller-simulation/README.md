@@ -17,13 +17,10 @@ A Python simulation of a PID feedback loop, controlling a second order dynamical
   - [Discrete-Time Controller Realization](#3-discrete-time-controller-realization)
   - [Actuator Saturation & Anti-Windup](#4-actuator-saturation--anti-windup)
   - [Numerical Integration (RK4)](#5-numerical-integration-rk4)
-- [Repository Structure](#repository-structure)
-- [Installation & Quickstart](#installation--quickstart)
 - [Running Simulations](#running-simulations)
   - [Step Response Analysis](#step-response-analysis)
   - [Tuning Profile Comparison](#tuning-profile-comparison)
 - [Unit Testing](#unit-testing)
-- [License](#license)
 
 ---
 
