@@ -15,7 +15,7 @@ The plots and simulations in this repository are organized around three courses 
 3. **Advanced Automatic Control Systems Techniques** - https://www.ece.ntua.gr/en/education/undergraduate/courses?selectedFlow=s&semester=7&courseId=3304
 
 ### Prerequisites
-Make sure you have Python installed along with the required scientific libraries:
+The necessary Python scientific libraries are listed below:
 
 ```bash
 pip install numpy scipy matplotlib control
