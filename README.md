@@ -1,4 +1,4 @@
-# Control Systems Plots
+# CONTROL SYSTEMS CONCEPTS
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![Subject](https://img.shields.io/badge/Subject-Control%20Theory-success.svg)
