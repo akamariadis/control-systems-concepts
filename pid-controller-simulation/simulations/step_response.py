@@ -1,41 +1,60 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from pid.controller import PIDController
-from pid.plant import MassDamperPlant
+from pid.plant import Cart1DPlant
 
-def run_simulation(kp=20.0, ki=10.0, kd=4.0, duration=10.0, dt=0.01):
-    pid = PIDController(kp, ki, kd, output_limits=(-100.0, 100.0))
-    plant = MassDamperPlant(mass=1.0, damping=0.5)
+
+def simulate_step(
+    kp: float = 25.0,
+    ki: float = 12.0,
+    kd: float = 6.0,
+    setpoint: float = 1.0,
+    duration: float = 8.0,
+    dt: float = 0.01,
+):
+    pid = PIDController(kp=kp, ki=ki, kd=kd, output_limits=(-50.0, 50.0))
+    plant = Cart1DPlant(mass=1.2, damping=0.8)
 
     time_steps = np.arange(0, duration, dt)
-    setpoint = 1.0  # Step input to 1.0 m
-
     positions = []
-    control_signals = []
+    velocities = []
+    control_efforts = []
 
     for _ in time_steps:
         u = pid.update(setpoint, plant.position, dt)
         pos = plant.step(u, dt)
         positions.append(pos)
-        control_signals.append(u)
+        velocities.append(plant.velocity)
+        control_efforts.append(u)
 
-    # Plot results
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 6), sharex=True)
-    ax1.plot(time_steps, positions, label="Response $x(t)$", color="#1f77b4", lw=2)
-    ax1.axhline(setpoint, color="red", linestyle="--", label="Setpoint")
+    positions = np.array(positions)
+    control_efforts = np.array(control_efforts)
+
+    # Compute response metrics
+    overshoot = max(0.0, (np.max(positions) - setpoint) / setpoint * 100.0)
+    print(f"Final Position: {positions[-1]:.4f} m")
+    print(f"Max Overshoot:  {overshoot:.2f}%")
+
+    # Plot
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(9, 6), sharex=True)
+
+    ax1.plot(time_steps, positions, label="Cart Position $x(t)$", color="#1f77b4", lw=2)
+    ax1.axhline(setpoint, color="red", linestyle="--", label="Target Setpoint")
     ax1.set_ylabel("Position (m)")
-    ax1.grid(True)
-    ax1.legend()
+    ax1.set_title("1D Cart Closed-Loop Step Response")
+    ax1.grid(True, linestyle="--", alpha=0.6)
+    ax1.legend(loc="lower right")
 
-    ax2.plot(time_steps, control_signals, label="Control Effort $u(t)$", color="#ff7f0e")
+    ax2.plot(time_steps, control_efforts, label="Force $u(t)$", color="#ff7f0e", lw=1.5)
     ax2.set_xlabel("Time (s)")
-    ax2.set_ylabel("Force (N)")
-    ax2.grid(True)
-    ax2.legend()
+    ax2.set_ylabel("Applied Force (N)")
+    ax2.grid(True, linestyle="--", alpha=0.6)
+    ax2.legend(loc="upper right")
 
     plt.tight_layout()
-    plt.savefig("assets/step_response.png", dpi=150)
+    plt.savefig("step_response.png", dpi=150)
     plt.show()
 
+
 if __name__ == "__main__":
-    run_simulation()
+    simulate_step()
