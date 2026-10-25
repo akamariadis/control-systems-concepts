@@ -1,7 +1,5 @@
 # 1D Cart PID Feedback Controller Simulation
 
-# [Currently in construction...]
-
 A Python simulation of a PID feedback loop, controlling a second order dynamical plant (1D cart with viscous friction). Built from first principles using Runge-Kutta 4th Order (RK4) numerical integration and discrete time anti-windup control.
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
